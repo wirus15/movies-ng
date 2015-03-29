@@ -1,17 +1,18 @@
-'use strict';
+(function () {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name moviesNgApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the moviesNgApp
- */
-angular.module('moviesNgApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  angular
+    .module('app')
+    .controller('MainController', MainController);
+
+  MainController.$inject = ['$scope', 'Trakt'];
+
+  function MainController($scope, trakt) {
+    $scope.hello = 'world';
+    $scope.popular = [];
+
+    trakt.getPopularMovies().then(function (response) {
+      console.log(response);
+    });
+  }
+})();
