@@ -11,7 +11,8 @@
             'ngSanitize',
             'ngTouch'
         ])
-        .config(Config);
+        .config(Config)
+        .constant('apiBaseUrl', 'http://127.0.0.1/trakt/proxy.php?csurl=https://api-v2launch.trakt.tv');
 
     function Config($routeProvider) {
         $routeProvider
