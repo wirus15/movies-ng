@@ -3,16 +3,16 @@
 
   angular
     .module('app')
-    .controller('MainController', MainController);
+    .controller('mainController', mainController);
 
-  MainController.$inject = ['$scope', 'Trakt'];
+  mainController.$inject = ['$scope', 'movieRepository'];
 
-  function MainController($scope, trakt) {
+  function mainController($scope, movieRepository) {
     $scope.hello = 'world';
     $scope.popular = [];
 
-    trakt.getPopularMovies().then(function (response) {
-      console.log(response);
+    movieRepository.getPopularMovies().then(function (response) {
+      console.log(response.data);
     });
   }
 })();
