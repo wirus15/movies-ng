@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs nav-justified">
+    <li role="presentation" ng-class="{active: category==cat.name}" ng-repeat="cat in categories">
+        <a ng-href="/#/movies/{{cat.name}}">{{cat.label}}</a>
+    </li>
+</ul>
+
+<ul class="list-group" id="movie_list">
+    <li class="list-group-item" ng-repeat="movie in movies track by $index">
+        <span class="badge">{{movie.year}}</span>
+        {{movie.title}}
+    </li>
+</ul>
+
+<nav>
+    <ul class="pager">
+        <li class="previous" ng-class="{disabled: page==1}">
+            <a ng-href="/#/movies/{{category}}/{{page-1}}"><i class="fa fa-arrow-left"></i> Previous</a>
+        </li>
+        <li>
+            Page: {{page}}
+        </li>
+        <li class="next">
+            <a ng-href="/#/movies/{{category}}/{{page+1}}">Next <i class="fa fa-arrow-right"></i></a>
+        </li>
+    </ul>
+</nav>

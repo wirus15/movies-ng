@@ -46,6 +46,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+
     connect: {
       options: {
         port: 9000,
@@ -94,6 +95,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -112,6 +114,7 @@ module.exports = function (grunt) {
         src: ['test/spec/**/*.js']
       }
     },
+
     clean: {
       dist: {
         files: [{
@@ -125,6 +128,7 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
+
     autoprefixer: {
       options: {
         browsers: ['last 1 version']
@@ -149,6 +153,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
@@ -175,6 +180,7 @@ module.exports = function (grunt) {
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
+
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
@@ -202,6 +208,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     filerev: {
       dist: {
         src: [
@@ -212,6 +219,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
@@ -227,6 +235,7 @@ module.exports = function (grunt) {
         }
       }
     },
+
     usemin: {
       html: ['<%= yeoman.dist %>/**/*.html'],
       css: ['<%= yeoman.dist %>/styles/**/*.css'],

@@ -20,12 +20,12 @@
 
   function routes($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'mainController'
+      .when('/movies/:category/:page?', {
+        templateUrl: 'views/movies/list.html',
+        controller: 'moviesListController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/movies/trending'
       });
   }
 
