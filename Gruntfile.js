@@ -304,6 +304,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     ngAnnotate: {
       dist: {
         files: [{
@@ -314,11 +315,13 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     cdnify: {
       dist: {
         html: ['<%= yeoman.dist %>/*.html']
       }
     },
+
     copy: {
       dist: {
         files: [{
@@ -353,6 +356,7 @@ module.exports = function (grunt) {
         src: '**/*.css'
       }
     },
+
     concurrent: {
       server: [
         'compass:server'
@@ -366,10 +370,19 @@ module.exports = function (grunt) {
         'svgmin'
       ]
     },
+
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      }
+    },
+
+    includeSource: {
+      main: {
+        files: {
+          '<%= yeoman.app %>/index.html': '<%= yeoman.app %>/index.html'
+        }
       }
     }
   });
@@ -384,6 +397,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'includeSource:main',
       'autoprefixer:server',
       'connect:livereload',
       'watch'
@@ -399,6 +413,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'concurrent:test',
+    'includeSource:main',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -407,8 +422,9 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'useminPrepare',
     'concurrent:dist',
+    'useminPrepare',
+    'includeSource',
     'autoprefixer',
     'concat',
     'ngAnnotate',

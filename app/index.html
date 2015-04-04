@@ -11,7 +11,9 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- include: "type": "css", "basePath": ".tmp", "baseUrl": "/", "files": "styles/**/*.css" -->
+    <link href="/styles/main.css" rel="stylesheet" type="text/css">
+    <!-- /include -->
     <!-- endbuild -->
 </head>
 <body ng-app="app">
@@ -67,12 +69,14 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/config.js"></script>
-    <script src="scripts/services/interceptors/proxy.js"></script>
-    <script src="scripts/services/interceptors/trakt.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/services/repositories/movies.js"></script>
+    <!-- include: "type": "js", "basePath": "app", "baseUrl": "/", "files": "scripts/**/*.js" -->
+    <script src="/scripts/app.js"></script>
+    <script src="/scripts/config.js"></script>
+    <script src="/scripts/controllers/main.js"></script>
+    <script src="/scripts/services/interceptors/proxy.js"></script>
+    <script src="/scripts/services/interceptors/trakt.js"></script>
+    <script src="/scripts/services/repositories/movies.js"></script>
+    <!-- /include -->
     <!-- endbuild -->
 </body>
 </html>
