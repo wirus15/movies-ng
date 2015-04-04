@@ -5,10 +5,6 @@
     .module('app')
     .factory('trakt', trakt);
 
-  angular
-    .module('app')
-    .config(['$httpProvider', registerInterceptor]);
-
   trakt.$inject = ['config'];
 
   function trakt(config) {
@@ -37,9 +33,5 @@
 
       angular.extend(params.headers, headers);
     }
-  }
-
-  function registerInterceptor($httpProvider) {
-    $httpProvider.interceptors.push('proxy');
   }
 })();

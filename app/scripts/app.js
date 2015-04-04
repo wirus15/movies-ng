@@ -11,9 +11,14 @@
       'ngSanitize',
       'ngTouch'
     ])
-    .config(Config);
+    .config(config);
 
-  function Config($routeProvider) {
+  function config($routeProvider, $httpProvider) {
+    routes($routeProvider);
+    interceptors($httpProvider);
+  }
+
+  function routes($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -23,4 +28,10 @@
         redirectTo: '/'
       });
   }
+
+  function interceptors($httpProvider) {
+    $httpProvider.interceptors.push('proxy');
+    $httpProvider.interceptors.push('trakt');
+  }
+
 })();

@@ -13,15 +13,25 @@
 
     return {
       getPopularMovies: getPopularMovies,
-      getTrendingMovies: getTrendingMovies,
+      getTrendingMovies: getTrendingMovies
     };
 
-    function getPopularMovies() {
-      return $http.get(apiBaseUrl + '/movies/popular');
+    function getPopularMovies(page, limit) {
+      return $http.get(apiBaseUrl + '/movies/popular', {
+        params: {
+          page: page,
+          limit: limit
+        }
+      });
     }
 
-    function getTrendingMovies() {
-      return $http.get(apiBaseUrl + '/movies/trending');
+    function getTrendingMovies(page, limit) {
+      return $http.get(apiBaseUrl + '/movies/trending', {
+        params: {
+          page: page,
+          limit: limit
+        }
+      });
     }
   }
 })();

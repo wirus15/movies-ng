@@ -5,37 +5,59 @@
     .module('app')
     .factory('proxy', proxy);
 
-  angular
-    .module('app')
-    .config(['$httpProvider', registerInterceptor]);
+  proxy.$inject = ['$location', 'config'];
 
-  proxy.$inject = ['config'];
-
-  function proxy(config) {
-    var $this = this;
-    $this.config = config;
+  function proxy($location, config) {
 
     return {
       request: modifyRequest
     };
 
+    /**
+     * @param {*} params
+     * @returns {*}
+     */
     function modifyRequest(params) {
-      var requestUrl = params.url;
-      var proxyUrl = $this.config.proxy;
-
-      if (
-        proxyUrl !== undefined &&
-        /http[s]?:\/\//.test(requestUrl) &&
-        requestUrl.indexOf(proxyUrl) === -1
-      ) {
-        params.url = proxyUrl + requestUrl;
+      if (proxyingRequired(params.url)) {
+        params.url = config.proxy + params.url;
       }
 
       return params;
     }
-  }
 
-  function registerInterceptor($httpProvider) {
-    $httpProvider.interceptors.push('proxy');
+    /**
+     * @param {string} url
+     * @returns {boolean}
+     */
+    function proxyingRequired(url) {
+      if (
+        /^http[s]?:\/\//.test(url) &&
+        url.indexOf(config.proxy) !== 0 &&
+        isSameOrigin(url) === false
+      ) {
+        return true;
+      }
+
+      return false;
+    }
+
+    /**
+     * @param {string} url
+     * @returns {boolean}
+     */
+    function isSameOrigin(url) {
+      var location = document.createElement('a');
+      location.href = url;
+
+      if (
+        location.protocol === $location.protocol() &&
+        location.hostname === $location.hostname() &&
+        location.port === $location.port()
+      ) {
+        return true;
+      }
+
+      return false;
+    }
   }
 })();
