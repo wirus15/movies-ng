@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs nav-justified">
     <li role="presentation" ng-class="{active: category==cat.name}" ng-repeat="cat in categories">
-        <a ui-sref="movies({category: cat.name, page: null})">{{cat.label}}</a>
+        <a ng-click="changeCategory(cat.name)">{{cat.label}}</a>
     </li>
 </ul>
 
@@ -14,13 +14,13 @@
 <nav>
     <ul class="pager">
         <li class="previous" ng-class="{disabled: page==1}">
-            <a ui-sref="movies({category: category, page: page-1})"><i class="fa fa-arrow-left"></i> Previous</a>
+            <a ng-click="prevPage()"><i class="fa fa-arrow-left"></i> Previous</a>
         </li>
         <li>
             Page: {{page}}
         </li>
         <li class="next">
-            <a ui-sref="movies({category: category, page: page+1})">Next <i class="fa fa-arrow-right"></i></a>
+            <a ng-click="nextPage()">Next <i class="fa fa-arrow-right"></i></a>
         </li>
     </ul>
 </nav>

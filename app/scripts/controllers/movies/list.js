@@ -5,18 +5,23 @@
     .module('app')
     .controller('moviesListController', moviesListController);
 
-  moviesListController.$inject = ['$scope', '$stateParams', 'movieRepository'];
+  moviesListController.$inject = ['$scope', '$state', 'movieRepository'];
 
-  function moviesListController($scope, $stateParams, movieRepository) {
+  function moviesListController($scope, $state, movieRepository) {
     $scope.movies = $scope.movies || [];
-    $scope.category = $stateParams.category;
-    $scope.page = parseInt($stateParams.page) || 1;
+    $scope.category = $state.params.category;
+    $scope.page = parseInt($state.params.page) || 1;
     $scope.categories = [
       { name: 'trending', label: 'Trending' },
       { name: 'popular', label: 'Popular' }
     ];
 
+    $scope.changeCategory = changeCategory;
+    $scope.prevPage = prevPage;
+    $scope.nextPage = nextPage;
+
     $scope.$watchGroup(['category', 'page'], getMovies);
+    $scope.$watchGroup(['category', 'page'], updateState);
 
     function getMovies() {
       switch ($scope.category) {
@@ -31,6 +36,30 @@
             $scope.movies = response.data;
           });
       }
+    }
+
+    function updateState() {
+      $state.transitionTo($state.$current, {
+        category: $scope.category,
+        page: $scope.page
+      }, {
+        notify: false
+      });
+    }
+
+    function changeCategory(category) {
+      $scope.category = category;
+      $scope.page = 1;
+    }
+
+    function prevPage() {
+      if ($scope.page > 1) {
+        $scope.page = $scope.page - 1;
+      }
+    }
+
+    function nextPage() {
+      $scope.page = $scope.page + 1;
     }
   }
 })();
