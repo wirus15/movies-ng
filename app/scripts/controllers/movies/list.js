@@ -24,16 +24,19 @@
     $scope.$watchGroup(['category', 'page'], updateState);
 
     function getMovies() {
+      $scope.spinner.show();
       switch ($scope.category) {
         case 'trending':
           return movieRepository.getTrendingMovies($scope.page).then(function (response) {
             $scope.movies = _.map(response.data, function(item) {
               return item.movie;
             });
+            $scope.spinner.hide();
           });
         case 'popular':
           return movieRepository.getPopularMovies($scope.page).then(function (response) {
             $scope.movies = response.data;
+            $scope.spinner.hide();
           });
       }
     }
