@@ -7,26 +7,26 @@
       'ngCookies',
       'ngMessages',
       'ngResource',
-      'ngRoute',
       'ngSanitize',
-      'ngTouch'
+      'ngTouch',
+      'ui.router'
     ])
     .config(config);
 
-  function config($routeProvider, $httpProvider) {
-    routes($routeProvider);
+  function config($stateProvider, $httpProvider, $urlRouterProvider) {
+    states($stateProvider, $urlRouterProvider);
     interceptors($httpProvider);
   }
 
-  function routes($routeProvider) {
-    $routeProvider
-      .when('/movies/:category/:page?', {
+  function states($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('movies', {
+        url: '/movies/{category}/{page}',
         templateUrl: 'views/movies/list.html',
         controller: 'moviesListController'
-      })
-      .otherwise({
-        redirectTo: '/movies/trending'
       });
+
+    $urlRouterProvider.otherwise('/movies/trending/');
   }
 
   function interceptors($httpProvider) {

@@ -5,12 +5,12 @@
     .module('app')
     .controller('moviesListController', moviesListController);
 
-  moviesListController.$inject = ['$scope', '$routeParams', 'movieRepository'];
+  moviesListController.$inject = ['$scope', '$stateParams', 'movieRepository'];
 
-  function moviesListController($scope, $routeParams, movieRepository) {
+  function moviesListController($scope, $stateParams, movieRepository) {
     $scope.movies = $scope.movies || [];
-    $scope.category = $routeParams.category;
-    $scope.page = parseInt($routeParams.page) || 1;
+    $scope.category = $stateParams.category;
+    $scope.page = parseInt($stateParams.page) || 1;
     $scope.categories = [
       { name: 'trending', label: 'Trending' },
       { name: 'popular', label: 'Popular' }
