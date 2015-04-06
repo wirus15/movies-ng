@@ -20,7 +20,8 @@
       return $http.get(apiBaseUrl + '/movies/popular', {
         params: {
           page: page,
-          limit: limit
+          limit: limit,
+          extended: 'images',
         }
       });
     }
@@ -29,7 +30,8 @@
       return $http.get(apiBaseUrl + '/movies/trending', {
         params: {
           page: page,
-          limit: limit
+          limit: limit,
+          extended: 'images'
         }
       });
     }

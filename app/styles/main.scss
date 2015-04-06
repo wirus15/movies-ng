@@ -18,10 +18,25 @@ a[ng-click] {
   cursor: pointer;
 }
 
-#movie_list li:first-child {
-  border-top: 0px;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
+#movie_list {
+  padding: 0px;
+  list-style: none;
+  li {
+    margin-bottom: 20px;
+    .movie-info {
+      background: #34495e;
+      color: #fff;
+      padding: 4px 8px;
+      height: 60px;
+      .title {
+        display: block;
+        font-size: 1.2em;
+      }
+      .year {
+        color: #1ABC9C;
+      }
+    }
+  }
 }
 
 .mov-spinner {
@@ -40,5 +55,4 @@ a[ng-click] {
     margin-left: -15px;
     margin-top: -15px;
   }
-
 }

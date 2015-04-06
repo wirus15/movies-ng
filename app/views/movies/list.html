@@ -4,23 +4,30 @@
     </li>
 </ul>
 
-<ul class="list-group" id="movie_list">
-    <li class="list-group-item" ng-repeat="movie in movies track by $index">
-        <span class="badge">{{movie.year}}</span>
-        {{movie.title}}
-    </li>
-</ul>
-
-<nav>
-    <ul class="pager">
-        <li class="previous" ng-class="{disabled: page==1}">
-            <a ng-click="prevPage()"><i class="fa fa-arrow-left"></i> Previous</a>
-        </li>
-        <li>
-            Page: {{page}}
-        </li>
-        <li class="next">
-            <a ng-click="nextPage()">Next <i class="fa fa-arrow-right"></i></a>
+<div class="container">
+    <ul id="movie_list" class="row movie-grid">
+        <li class="col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">
+            <div class="poster">
+                <img ng-src="{{movie.images.poster.thumb}}" alt="{{movie.title}}" width="100%" />
+            </div>
+            <div class="movie-info">
+                <span class="title">{{movie.title}}</span>
+                <span class="year">{{movie.year}}</span>
+            </div>
         </li>
     </ul>
-</nav>
+
+    <nav>
+        <ul class="pager">
+            <li class="previous" ng-class="{disabled: page==1}">
+                <a ng-click="prevPage()"><i class="fa fa-arrow-left"></i> Previous</a>
+            </li>
+            <li>
+                Page: {{page}}
+            </li>
+            <li class="next">
+                <a ng-click="nextPage()">Next <i class="fa fa-arrow-right"></i></a>
+            </li>
+        </ul>
+    </nav>
+</div>
