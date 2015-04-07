@@ -17,53 +17,42 @@
     ];
 
     $scope.changeCategory = changeCategory;
-    $scope.prevPage = prevPage;
     $scope.nextPage = nextPage;
 
     $scope.$watchGroup(['category', 'page'], getMovies);
-    $scope.$watchGroup(['category', 'page'], updateState);
 
     function getMovies() {
-      $scope.spinner.show();
-      var limit = 24;
+      var limit = 48;
       switch ($scope.category) {
         case 'trending':
-          return movieRepository.getTrendingMovies($scope.page, limit).then(function (response) {
-            $scope.movies = _.map(response.data, function(item) {
-              return item.movie;
+          movieRepository
+            .getTrendingMovies($scope.page, limit)
+            .then(function (response) {
+              appendMovies(_.map(response.data, function(item) {
+                return item.movie;
+              }));
             });
-            $scope.spinner.hide();
-          });
         case 'popular':
-          return movieRepository.getPopularMovies($scope.page, limit).then(function (response) {
-            $scope.movies = response.data;
-            $scope.spinner.hide();
-          });
+          movieRepository
+            .getPopularMovies($scope.page, limit)
+            .then(function (response) {
+              appendMovies(response.data);
+            });
       }
     }
 
-    function updateState() {
-      $state.transitionTo($state.$current, {
-        category: $scope.category,
-        page: $scope.page
-      }, {
-        notify: false
-      });
-    }
-
-    function changeCategory(category) {
-      $scope.category = category;
-      $scope.page = 1;
-    }
-
-    function prevPage() {
-      if ($scope.page > 1) {
-        $scope.page = $scope.page - 1;
-      }
+    function appendMovies(movies) {
+      $scope.movies.push.apply($scope.movies, movies);
     }
 
     function nextPage() {
       $scope.page = $scope.page + 1;
+    }
+
+    function changeCategory(category) {
+      $scope.movies = [];
+      $scope.category = category;
+      $scope.page = 1;
     }
   }
 })();

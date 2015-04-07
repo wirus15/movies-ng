@@ -5,29 +5,14 @@
 </ul>
 
 <div class="container">
-    <ul id="movie_list" class="row movie-grid">
-        <li class="col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">
-            <div class="poster">
-                <img ng-src="{{movie.images.poster.thumb}}" alt="{{movie.title}}" width="100%" />
-            </div>
-            <div class="movie-info">
-                <span class="title">{{movie.title}}</span>
-                <span class="year">{{movie.year}}</span>
+    <ul id="movie_list" class="row movie-grid" infinite-scroll="nextPage()">
+        <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">
+            <div class="poster" style="background-image: url({{movie.images.poster.thumb}})">
+                <div class="movie-info">
+                    <span class="title">{{movie.title}}</span>
+                    <span class="year">{{movie.year}}</span>
+                </div>
             </div>
         </li>
     </ul>
-
-    <nav>
-        <ul class="pager">
-            <li class="previous" ng-class="{disabled: page==1}">
-                <a ng-click="prevPage()"><i class="fa fa-arrow-left"></i> Previous</a>
-            </li>
-            <li>
-                Page: {{page}}
-            </li>
-            <li class="next">
-                <a ng-click="nextPage()">Next <i class="fa fa-arrow-right"></i></a>
-            </li>
-        </ul>
-    </nav>
 </div>

@@ -9,7 +9,8 @@
       'ngResource',
       'ngSanitize',
       'ngTouch',
-      'ui.router'
+      'ui.router',
+      'infinite-scroll'
     ])
     .config(config);
 
