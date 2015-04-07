@@ -26,36 +26,34 @@ a[ng-click] {
     margin-bottom: 20px;
     transition: transform 0.2s;
     .poster {
-      border-radius: 4px;
-      background-color: #34495e;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
       background-size: cover;
-      height: 296px;
-      .movie-info {
-        color: #fff;
-        padding: 4px 8px;
-        height: 48px;
-        background-color: #34495e;
-        position: relative;
-        top: 248px;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        .title {
-          display: block;
-          overflow: hidden !important;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-        .year {
-          font-size: 0.8em;
-          font-weight: bold;
-          color: #1ABC9C;
-        }
+      height: 248px;
+    }
+    .movie-info {
+      color: #fff;
+      padding: 4px 8px;
+      height: 48px;
+      background-color: #34495e;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      margin-top: -2px;
+      .title {
+        display: block;
+        overflow: hidden !important;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
-      &:hover {
-        transform: scale(1.05, 1.05);
+      .year {
+        font-size: 0.8em;
+        font-weight: bold;
+        color: #1ABC9C;
       }
     }
-
+    &:hover {
+      transform: scale(1.05, 1.05);
+    }
   }
 }
 

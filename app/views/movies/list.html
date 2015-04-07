@@ -1,17 +1,16 @@
 <ul class="nav nav-tabs nav-justified">
     <li role="presentation" ng-class="{active: category==cat.name}" ng-repeat="cat in categories">
-        <a ng-click="changeCategory(cat.name)">{{cat.label}}</a>
+        <a ui-sref="movies({page: 1, category: cat.name})">{{cat.label}}</a>
     </li>
 </ul>
 
 <div class="container">
-    <ul id="movie_list" class="row movie-grid" infinite-scroll="nextPage()">
+    <ul id="movie_list" class="row movie-grid" infinite-scroll="nextPage()" infinite-scroll-distance="0" infinite-scroll-immediate-check="true">
         <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">
-            <div class="poster" style="background-image: url({{movie.images.poster.thumb}})">
-                <div class="movie-info">
-                    <span class="title">{{movie.title}}</span>
-                    <span class="year">{{movie.year}}</span>
-                </div>
+            <div class="poster" style="background-image: url({{movie.images.poster.thumb}})"></div>
+            <div class="movie-info">
+                <span class="title">{{movie.title}}</span>
+                <span class="year">{{movie.year}}</span>
             </div>
         </li>
     </ul>

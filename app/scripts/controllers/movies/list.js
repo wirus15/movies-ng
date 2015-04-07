@@ -15,8 +15,6 @@
       { name: 'trending', label: 'Trending' },
       { name: 'popular', label: 'Popular' }
     ];
-
-    $scope.changeCategory = changeCategory;
     $scope.nextPage = nextPage;
 
     $scope.$watchGroup(['category', 'page'], getMovies);
@@ -32,12 +30,14 @@
                 return item.movie;
               }));
             });
+            break;
         case 'popular':
           movieRepository
             .getPopularMovies($scope.page, limit)
             .then(function (response) {
               appendMovies(response.data);
             });
+            break;
       }
     }
 
@@ -47,12 +47,6 @@
 
     function nextPage() {
       $scope.page = $scope.page + 1;
-    }
-
-    function changeCategory(category) {
-      $scope.movies = [];
-      $scope.category = category;
-      $scope.page = 1;
     }
   }
 })();
