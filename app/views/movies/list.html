@@ -1,9 +1,3 @@
-<ul class="nav nav-tabs nav-justified">
-    <li role="presentation" ng-class="{active: category==cat.name}" ng-repeat="cat in categories">
-        <a ui-sref="movies({page: 1, category: cat.name})">{{cat.label}}</a>
-    </li>
-</ul>
-
 <div class="container">
     <ul id="movie_list" class="row movie-grid" infinite-scroll="nextPage()" infinite-scroll-distance="1" infinite-scroll-immediate-check="true" infinite-scroll-disabled="busy">
         <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">

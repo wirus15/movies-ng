@@ -18,6 +18,10 @@ a[ng-click] {
   cursor: pointer;
 }
 
+#main_container {
+  margin-top: 60px;
+}
+
 #movie_list {
   padding: 0px;
   list-style: none;
@@ -32,6 +36,8 @@ a[ng-click] {
       background-size: cover;
       background-position: center;
       .poster {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         background-size: cover;
         background-position: center;
         height: 248px;
