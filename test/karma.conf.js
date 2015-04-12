@@ -32,6 +32,8 @@ module.exports = function(config) {
       'bower_components/lodash/lodash.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
+      'bower_components/videojs/dist/video-js/video.js',
+      'bower_components/flat-ui/dist/js/flat-ui.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

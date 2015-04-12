@@ -19,6 +19,7 @@
       var requestUrl = params.url;
       if (requestUrl.indexOf($this.config.trakt.apiBaseUrl)) {
         addHeaders(params);
+        addDummyData(params);
       }
 
       return params;
@@ -32,6 +33,12 @@
       };
 
       angular.extend(params.headers, headers);
+    }
+
+    function addDummyData(params) {
+      if (params.data === undefined) {
+        params.data = '';
+      }
     }
   }
 })();

@@ -3,12 +3,13 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, trakt-api-key, trakt-api-version");
 
+
 if($_SERVER['REQUEST_METHOD'] === 'OPTIONS') exit;
 
 /**
  * AJAX Cross Domain (PHP) Proxy 0.8
  *    by Iacovos Constantinou (http://www.iacons.net)
- * 
+ *
  * Released under CC-GNU GPL
  */
 
@@ -71,21 +72,21 @@ if ( 'GET' == $request_method ) {
 
 // Get URL from `csurl` in GET or POST data, before falling back to X-Proxy-URL header.
 if ( isset( $_REQUEST['csurl'] ) ) {
-    $request_url = urldecode( $_REQUEST['csurl'] );
+	$request_url = urldecode( $_REQUEST['csurl'] );
 } else if ( isset( $_SERVER['HTTP_X_PROXY_URL'] ) ) {
-    $request_url = urldecode( $_SERVER['HTTP_X_PROXY_URL'] );
+	$request_url = urldecode( $_SERVER['HTTP_X_PROXY_URL'] );
 } else {
-    header( $_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-    header( 'Status: 404 Not Found' );
-    $_SERVER['REDIRECT_STATUS'] = 404;
-    exit;
+	header( $_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+	header( 'Status: 404 Not Found' );
+	$_SERVER['REDIRECT_STATUS'] = 404;
+	exit;
 }
 
 $p_request_url = parse_url( $request_url );
 
 // csurl may exist in GET request methods
 if ( is_array( $request_params ) && array_key_exists('csurl', $request_params ) )
-	unset( $request_params['csurl'] );
+unset( $request_params['csurl'] );
 
 // ignore requests for proxy :)
 if ( preg_match( '!' . $_SERVER['SCRIPT_NAME'] . '!', $request_url ) || empty( $request_url ) || count( $p_request_url ) == 1 ) {
@@ -148,6 +149,9 @@ foreach ( $response_headers as $key => $response_header ) {
 	if ( preg_match( '/^Location:/', $response_header ) ) {
 		list($header, $value) = preg_split( '/: /', $response_header, 2 );
 		$response_header = 'Location: ' . $_SERVER['REQUEST_URI'] . '?csurl=' . $value;
+	}
+	if ($response_header === 'Access-Control-Allow-Origin: *') {
+		continue;
 	}
 	if ( !preg_match( '/^(Transfer-Encoding):/', $response_header ) ) {
 		header( $response_header, false );
