@@ -16,11 +16,13 @@
       { name: 'popular', label: 'Popular' }
     ];
     $scope.nextPage = nextPage;
+    $scope.busy = false;
 
     $scope.$watchGroup(['category', 'page'], getMovies);
 
     function getMovies() {
       var limit = 48;
+      $scope.busy = true;
       switch ($scope.category) {
         case 'trending':
           movieRepository
@@ -43,6 +45,7 @@
 
     function appendMovies(movies) {
       $scope.movies.push.apply($scope.movies, movies);
+      $scope.busy = false;
     }
 
     function nextPage() {
