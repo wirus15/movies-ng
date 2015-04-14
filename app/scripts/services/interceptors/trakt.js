@@ -5,8 +5,6 @@
     .module('app')
     .factory('trakt', trakt);
 
-  trakt.$inject = ['config'];
-
   function trakt(config) {
     var $this = this;
     $this.config = config;

@@ -5,8 +5,6 @@
     .module('app')
     .factory('movieRepository', movieRepository);
 
-  movieRepository.$inject = ['$http', 'config'];
-
   function movieRepository($http, config) {
 
     var apiBaseUrl = config.trakt.apiBaseUrl;

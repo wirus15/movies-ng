@@ -5,8 +5,6 @@
     .module('app')
     .factory('proxy', proxy);
 
-  proxy.$inject = ['$location', 'config'];
-
   function proxy($location, config) {
 
     return {
