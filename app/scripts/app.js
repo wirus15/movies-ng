@@ -10,13 +10,15 @@
       'ngSanitize',
       'ngTouch',
       'ui.router',
-      'infinite-scroll'
+      'infinite-scroll',
+      'oauth'
     ])
     .config(config);
 
-  function config($stateProvider, $httpProvider, $urlRouterProvider) {
+  function config($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
     states($stateProvider, $urlRouterProvider);
     interceptors($httpProvider);
+    $locationProvider.html5Mode(true).hashPrefix('!');
   }
 
   function states($stateProvider, $urlRouterProvider) {

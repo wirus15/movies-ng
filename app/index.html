@@ -5,6 +5,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <base href="/"/>
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/videojs/dist/video-js/video-js.css" />
@@ -21,6 +22,18 @@
                     <ul class="nav navbar-nav" nav-menu>
                         <li class="active"><a ui-sref="movies({category: 'trending'})">Trending</a></li>
                         <li><a ui-sref="movies({category: 'popular'})">Popular</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <oauth
+                                    site="https://trakt.tv"
+                                    client-id="46850385b8b30f9c03d3f9ee4d7af98825d08a868039d4cd495b757225dd3d08"
+                                    redirect-uri="http://localhost:9000"
+                                    scope="public"
+                                    template="views/templates/login.html">
+                            </oauth>
+                            <!--<a href="#"><i class="fa fa-arrow-right"></i>&nbsp;Sign In</a>-->
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,6 +67,8 @@
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
     <script src="bower_components/videojs/dist/video-js/video.js"></script>
     <script src="bower_components/flat-ui/dist/js/flat-ui.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/oauth-ng/dist/oauth-ng.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
