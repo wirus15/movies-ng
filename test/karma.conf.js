@@ -34,8 +34,9 @@ module.exports = function(config) {
       'bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',
       'bower_components/videojs/dist/video-js/video.js',
       'bower_components/flat-ui/dist/js/flat-ui.js',
-      'bower_components/ngstorage/ngStorage.js',
-      'bower_components/oauth-ng/dist/oauth-ng.js',
+      'bower_components/angular-cookie/angular-cookie.js',
+      'bower_components/query-string/query-string.js',
+      'bower_components/angular-oauth2/dist/angular-oauth2.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

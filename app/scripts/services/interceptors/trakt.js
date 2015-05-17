@@ -1,42 +1,42 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('app')
-    .factory('trakt', trakt);
+    angular
+        .module('app')
+        .factory('trakt', trakt);
 
-  function trakt(config) {
-    var $this = this;
-    $this.config = config;
+    function trakt(config) {
+        var $this = this;
+        $this.config = config;
 
-    return {
-      request: modifyRequest
-    };
+        return {
+            request: modifyRequest
+        };
 
-    function modifyRequest(params) {
-      var requestUrl = params.url;
-      if (requestUrl.indexOf($this.config.trakt.apiBaseUrl)) {
-        addHeaders(params);
-        addDummyData(params);
-      }
+        function modifyRequest(params) {
+            var requestUrl = params.url;
+            if (requestUrl.indexOf($this.config.trakt.apiBaseUrl)) {
+                addHeaders(params);
+                addDummyData(params);
+            }
 
-      return params;
+            return params;
+        }
+
+        function addHeaders(params) {
+            var headers = {
+                'Content-Type': 'application/json',
+                'trakt-api-key': $this.config.trakt.clientId,
+                'trakt-api-version': $this.config.trakt.apiVersion
+            };
+
+            angular.extend(params.headers, headers);
+        }
+
+        function addDummyData(params) {
+            if (params.data === undefined) {
+                params.data = '';
+            }
+        }
     }
-
-    function addHeaders(params) {
-      var headers = {
-        'Content-Type': 'application/json',
-        'trakt-api-key': $this.config.trakt.clientId,
-        'trakt-api-version': $this.config.trakt.apiVersion
-      };
-
-      angular.extend(params.headers, headers);
-    }
-
-    function addDummyData(params) {
-      if (params.data === undefined) {
-        params.data = '';
-      }
-    }
-  }
 })();
