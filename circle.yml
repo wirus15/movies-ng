@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    Europe/Warsaw
+
+dependencies:
+  post:
+    - "node_modules/bower/bin/bower install"
+
+  cache_directories:
+    - "bower_components"
+    - "node_modules"
