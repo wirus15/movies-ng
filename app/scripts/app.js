@@ -15,10 +15,9 @@
     ])
     .config(config);
 
-  function config($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
+  function config($stateProvider, $httpProvider, $urlRouterProvider) {
     states($stateProvider, $urlRouterProvider);
     interceptors($httpProvider);
-    $locationProvider.html5Mode(true).hashPrefix('!');
   }
 
   function states($stateProvider, $urlRouterProvider) {
@@ -28,6 +27,22 @@
         templateUrl: 'views/movies/list.html',
         controller: 'moviesListController'
       });
+
+    $stateProvider.state('accessToken', {
+      url: '/access_token={accessToken}&token_type={tokenType}&expires_in={expiresIn}',
+      templateUrl: '',
+      controller: function ($location, $state, AccessToken) {
+        //var hash = $location.path().substr(1);
+        //AccessToken.setTokenFromString(hash);
+        //console.log(AccessToken.get());
+        //$location.path('/');
+        //$location.replace();
+        //AccessToken.setTokenFromString($stateParams.accessToken);
+        //console.log(AccessToken.get());
+        window.location.href = '/#/movies/trending/1';
+        //$state.go('movies', {category: 'trending', page: 1});
+      }
+    });
 
     $urlRouterProvider.otherwise('/movies/trending/');
   }
