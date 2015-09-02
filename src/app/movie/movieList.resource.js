@@ -3,9 +3,14 @@
 
     angular
         .module('app')
-        .controller('moviesListController', moviesListController);
+        .factory('MovieListResource', MovieListResource);
 
-    function moviesListController($scope, $state, movieRepository) {
+    function MovieListResource($resource) {
+        return $resource{
+
+        }
+
+
         $scope.movies = $scope.movies || [];
         $scope.category = $state.params.category;
         $scope.page = parseInt($state.params.page) || 1;

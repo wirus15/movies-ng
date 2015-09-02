@@ -10,10 +10,11 @@
             .state('movies', {
                 url: '/movies/{category}/{page}',
                 templateUrl: 'views/movies/list.html',
-                controller: 'moviesListController'
+                controller: 'MovieListController',
+                controllerAs: 'movieListCtrl'
             });
 
-        $urlRouterProvider.otherwise('/movies/trending/');
+        $urlRouterProvider.otherwise('/movies/trending');
     }
 
 })();
