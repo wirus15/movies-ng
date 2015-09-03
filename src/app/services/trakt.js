@@ -8,14 +8,25 @@
     function Trakt($resource, config) {
 
         return function(url, paramDefaults, actions, options) {
-            actions = appendHeaders(actions);
             url = prependBaseUrl(url);
+            actions = appendHeaders(actions);
+            actions = prependBaseUrlForActions(actions);
 
             return $resource(url, paramDefaults, actions, options);
         };
 
         function prependBaseUrl(url) {
             return config.trakt.apiBaseUrl + url;
+        }
+
+        function prependBaseUrlForActions(actions) {
+            angular.forEach(actions, function(action) {
+                if (action.url !== undefined) {
+                    action.url = prependBaseUrl(action.url);
+                }
+            });
+
+            return actions;
         }
 
         function appendHeaders(actions) {

@@ -5,15 +5,10 @@
         .module('app')
         .controller('MovieListController', MovieListController);
 
-    function MovieListController($scope, $state, Trakt) {
+    function MovieListController($scope, $state, MovieListResource) {
         var vm = this;
 
-        var trending = Trakt('/movies/trending', {}, {
-            get: {
-                cache: true,
-                isArray: true
-            }
-        });
+        console.log(MovieListResource.trending({page: 2}));
 
         //$scope.movies = $scope.movies || [];
         //$scope.category = $state.params.category;
