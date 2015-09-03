@@ -10,7 +10,7 @@
         var defaults = {
             page: 1,
             limit: 48,
-            extended: 'image'
+            extended: 'images'
         };
 
         return Trakt('', defaults, {
