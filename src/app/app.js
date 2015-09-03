@@ -9,9 +9,7 @@
             'ngResource',
             'ngSanitize',
             'ngTouch',
-            'ui.router',
-            'infinite-scroll',
-            'jsoProvider'
+            'ui.router'
         ]);
 
 })();

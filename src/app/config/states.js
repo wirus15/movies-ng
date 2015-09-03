@@ -8,8 +8,8 @@
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('movies', {
-                url: '/movies/{category}/{page}',
-                templateUrl: 'views/movies/list.html',
+                url: '/movies/{category}',
+                templateUrl: 'app/movie/movieList.html',
                 controller: 'MovieListController',
                 controllerAs: 'movieListCtrl'
             });
