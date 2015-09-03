@@ -7,47 +7,42 @@
 
     function MovieListController($scope, $state, MovieListResource) {
         var vm = this;
+        vm.movies = [];
+        vm.category = $state.params.category;
+        vm.page = parseInt($state.params.page) || 1;
+        vm.nextPage = nextPage;
+        vm.scrollEnabled = true;
+        initialize();
 
-        console.log(MovieListResource.trending({page: 2}));
+        function initialize() {
+            $scope.$watch('movieListCtrl.category', function() {
+                vm.page = 1;
+                vm.movies = [];
+            });
 
-        //$scope.movies = $scope.movies || [];
-        //$scope.category = $state.params.category;
-        //$scope.page = parseInt($state.params.page) || 1;
-        //$scope.nextPage = nextPage;
-        //$scope.scrollEnabled = true;
-        //
-        //$scope.$watchGroup(['category', 'page'], getMovies);
-        //
-        //function getMovies() {
-        //    var limit = 48;
-        //    $scope.scrollEnabled = false;
-        //    switch ($scope.category) {
-        //        case 'trending':
-        //            movieRepository
-        //                .getTrendingMovies($scope.page, limit)
-        //                .then(function (response) {
-        //                    appendMovies(_.map(response.data, function (item) {
-        //                        return item.movie;
-        //                    }));
-        //                });
-        //            break;
-        //        case 'popular':
-        //            movieRepository
-        //                .getPopularMovies($scope.page, limit)
-        //                .then(function (response) {
-        //                    appendMovies(response.data);
-        //                });
-        //            break;
-        //    }
-        //}
-        //
-        //function appendMovies(movies) {
-        //    $scope.movies.push.apply($scope.movies, movies);
-        //    $scope.scrollEnabled = true;
-        //}
-        //
-        //function nextPage() {
-        //    $scope.page = $scope.page + 1;
-        //}
+            $scope.$watch('movieListCtrl.page', loadMovies);
+        }
+
+        function loadMovies() {
+            vm.scrollEnabled = false;
+            var params = { page: vm.page };
+            switch (vm.category) {
+                case 'trending':
+                    MovieListResource.trending(params, appendMovies);
+                    break;
+                case 'popular':
+                    MovieListResource.popular(params, appendMovies);
+                    break;
+            }
+        }
+
+        function appendMovies(movies) {
+            vm.movies.push.apply(vm.movies, movies);
+            vm.scrollEnabled = true;
+        }
+
+        function nextPage() {
+            vm.page = vm.page + 1;
+        }
     }
 })();

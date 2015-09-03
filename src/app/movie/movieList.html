@@ -1,7 +1,7 @@
 <div class="container">
-    <ul id="movie_list" class="row movie-grid" infinite-scroll="nextPage()" infinite-scroll-distance="1"
-        infinite-scroll-immediate-check="true" infinite-scroll-disabled="!scrollEnabled">
-        <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movies track by $index">
+    <ul id="movie_list" class="row movie-grid" infinite-scroll="movieListCtrl.nextPage()" infinite-scroll-distance="1"
+        infinite-scroll-immediate-check="true" infinite-scroll-disabled="!movieListCtrl.scrollEnabled">
+        <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movieListCtrl.movies track by $index">
             <div class="placeholder">
                 <div class="poster" ng-style="{'background-image': 'url({{movie.images.poster.thumb}})'}"></div>
             </div>
