@@ -4,7 +4,6 @@
     angular
         .module('app')
         .constant('config', {
-            proxy: 'http://127.0.0.1/movies-ng/proxy.php?csurl=',
             trakt: {
                 apiBaseUrl: 'https://api-v2launch.trakt.tv',
                 apiVersion: 2,
