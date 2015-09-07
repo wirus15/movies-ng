@@ -12,6 +12,7 @@
         vm.page = parseInt($state.params.page) || 1;
         vm.nextPage = nextPage;
         vm.scrollEnabled = true;
+        vm.loading = false;
         initialize();
 
         function initialize() {
@@ -25,6 +26,7 @@
 
         function loadMovies() {
             vm.scrollEnabled = false;
+            vm.loading = true;
             var params = { page: vm.page };
             switch (vm.category) {
                 case 'trending':
@@ -39,6 +41,7 @@
         function appendMovies(movies) {
             vm.movies.push.apply(vm.movies, movies);
             vm.scrollEnabled = true;
+            vm.loading = false;
         }
 
         function nextPage() {
