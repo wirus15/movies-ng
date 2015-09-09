@@ -1,0 +1,8 @@
+<form id="form" name="form" action="https://api-v2launch.trakt.tv/oauth/token" method="post">
+    <input type="text" name="code" ng-model="tokenCtrl.code" />
+    <input type="text" name="client_id" ng-model="tokenCtrl.clientId" />
+    <input type="text" name="client_secret" ng-model="tokenCtrl.clientSecret" />
+    <input type="text" name="redirect_uri" ng-model="tokenCtrl.redirectUri" />
+    <input type="text" name="grant_type" value="authorization_code" />
+    <input type="submit" />
+</form>
