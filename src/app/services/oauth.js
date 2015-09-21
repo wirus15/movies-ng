@@ -7,18 +7,16 @@
 
     function Oauth(config, $window, $http, Token) {
         var vm = this;
+        vm.redirectUri = 'http://localhost:3000/oauth.html';
         vm.authorize = authorize;
         vm.getAccessToken = getAccessToken;
-        vm.redirectUri = 'http://localhost:3000/oauth.html';
 
         function authorize() {
-            var url = URI('http://trakt.tv/oauth/authorize').query({
+            $window.location.href = URI('http://trakt.tv/oauth/authorize').query({
                 response_type: 'code',
                 client_id: config.trakt.clientId,
                 redirect_uri: vm.redirectUri
             });
-
-            $window.location.href = url;
         }
 
         function getAccessToken(code) {
