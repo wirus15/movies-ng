@@ -10,17 +10,12 @@
         vm.movies = [];
         vm.category = $state.params.category;
         vm.page = parseInt($state.params.page) || 1;
-        vm.nextPage = nextPage;
         vm.scrollEnabled = true;
         vm.loading = false;
+        vm.nextPage = nextPage;
         initialize();
 
         function initialize() {
-            $scope.$watch('movieListCtrl.category', function() {
-                vm.page = 1;
-                vm.movies = [];
-            });
-
             $scope.$watch('movieListCtrl.page', loadMovies);
         }
 
