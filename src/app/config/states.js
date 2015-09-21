@@ -7,11 +7,23 @@
 
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('movies', {
-                url: '/movies/{category}',
+            .state('movies_trending', {
+                url: '/movies/trending',
                 templateUrl: 'app/movie/movieList.html',
                 controller: 'MovieListController',
-                controllerAs: 'movieListCtrl'
+                controllerAs: 'movieListCtrl',
+                params: {
+                    category: 'trending'
+                }
+            })
+            .state('movies_popular', {
+                url: '/movies/popular',
+                templateUrl: 'app/movie/movieList.html',
+                controller: 'MovieListController',
+                controllerAs: 'movieListCtrl',
+                params: {
+                    category: 'popular'
+                }
             })
             .state('oauth_authorization', {
                 url: '/oauth/authorization',
