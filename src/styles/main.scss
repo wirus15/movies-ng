@@ -10,7 +10,7 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
-a[ng-click] {
+a[ng-click], a[ui-sref] {
   cursor: pointer;
 }
 

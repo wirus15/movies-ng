@@ -10,6 +10,7 @@
         vm.get = getToken;
         vm.set = setToken;
         vm.remove = remove;
+        vm.isValid = isValid;
 
         function getToken() {
             $cookies.get('access_token');
@@ -21,6 +22,10 @@
 
         function remove() {
             $cookies.remove('access_token');
+        }
+
+        function isValid() {
+            return !!$cookies.get('access_token');
         }
     }
 

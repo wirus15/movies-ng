@@ -5,17 +5,21 @@
         .module('app')
         .service('Oauth', Oauth);
 
-    function Oauth(config, $window, $http, Token) {
+    function Oauth($window, $http, $state, config, Token) {
         var vm = this;
-        vm.redirectUri = 'http://localhost:3000/oauth.html';
+
         vm.authorize = authorize;
         vm.getAccessToken = getAccessToken;
+        vm.getPreviousState = getPreviousState;
 
         function authorize() {
+            sessionStorage.previousState = $state.current.name;
             $window.location.href = URI('http://trakt.tv/oauth/authorize').query({
                 response_type: 'code',
                 client_id: config.trakt.clientId,
-                redirect_uri: vm.redirectUri
+                redirect_uri: $state.href('oauth_authorization', {}, {
+                    absolute: true
+                })
             });
         }
 
@@ -24,7 +28,9 @@
                 code: code,
                 client_id: config.trakt.clientId,
                 client_secret: config.trakt.secret,
-                redirect_uri: vm.redirectUri,
+                redirect_uri: $state.href('oauth_authorization', {}, {
+                    absolute: true
+                }),
                 grant_type: 'authorization_code'
             }).then(function(response) {
                 var token = response.data.access_token;
@@ -32,6 +38,13 @@
 
                 return token;
             });
+        }
+
+        function getPreviousState() {
+            var state = sessionStorage.previousState;
+            sessionStorage.removeItem('previousState');
+
+            return state;
         }
     }
 

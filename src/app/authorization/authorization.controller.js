@@ -5,8 +5,17 @@
         .module('app')
         .controller('AuthorizationController', AuthorizationController);
 
-    function AuthorizationController(Oauth) {
+    function AuthorizationController($state, Oauth) {
         var vm = this;
-        vm.authorize = Oauth.authorize;
+        initialize();
+
+        function initialize() {
+            var uri = URI();
+            vm.code = uri.search(true).code;
+            Oauth.getAccessToken(vm.code).then(function() {
+                var previousState = Oauth.getPreviousState() || 'movies_trending';
+                $state.go(previousState);
+            });
+        }
     }
 })();

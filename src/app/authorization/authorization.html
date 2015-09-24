@@ -1,1 +1,8 @@
-<a ng-click="authorizationCtrl.authorize()">Zaloguj sie</a>
+<form id="form" name="form" action="https://trakt.tv/oauth/token" method="post">
+    <input type="text" name="code" ng-model="authorizationCtrl.code" />
+    <input type="text" name="client_id" ng-model="authorizationCtrl.clientId" />
+    <input type="text" name="client_secret" ng-model="authorizationCtrl.clientSecret" />
+    <input type="text" name="redirect_uri" ng-model="authorizationCtrl.redirectUri" />
+    <input type="text" name="grant_type" value="authorization_code" />
+    <input type="submit" />
+</form>
