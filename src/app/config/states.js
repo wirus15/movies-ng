@@ -25,6 +25,10 @@
                     category: 'popular'
                 }
             })
+            .state('oauth_authorization', {
+                url: '/oauth/authorization',
+                controller: 'AuthorizationController'
+            })
         ;
 
         $urlRouterProvider.otherwise('/movies/trending');

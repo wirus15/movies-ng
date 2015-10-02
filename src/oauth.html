@@ -1,0 +1,4 @@
+<script>
+    var code = location.href.match(/code=([a-f0-9]+)/);
+    location.href = '/#/oauth/token/' + code[1];
+</script>
