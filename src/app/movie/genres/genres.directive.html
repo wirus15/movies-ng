@@ -1,0 +1,8 @@
+<ul id="genres">
+    <li ng-class="{active: !currentGenre}">
+        <a ng-click="selectGenre(null)">All</a>
+    </li>
+    <li ng-repeat="genre in genres track by genre.slug" ng-class="{active: currentGenre === genre.slug}">
+        <a ng-click="selectGenre(genre.slug)">{{ genre.name }}</a>
+    </li>
+</ul>

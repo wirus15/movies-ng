@@ -1,9 +1,15 @@
 <div class="container">
-    <ul id="movie_list" class="row movie-grid" infinite-scroll="movieListCtrl.nextPage()" infinite-scroll-distance="1"
-        infinite-scroll-immediate-check="true" infinite-scroll-disabled="!movieListCtrl.scrollEnabled">
-        <li class="col-xs-6 col-md-2 movie-grid-item" ng-repeat="movie in movieListCtrl.movies track by $index">
+    <ul id="movie_list" class="row movie-grid"
+        infinite-scroll="movieListCtrl.nextPage()"
+        infinite-scroll-distance="1"
+        infinite-scroll-immediate-check="true"
+        infinite-scroll-disabled="!movieListCtrl.scrollEnabled"
+    >
+        <li class="col-xs-6 col-md-2 movie-grid-item"
+            ng-repeat="movie in movieListCtrl.filteredMovies track by $index"
+        >
             <div class="placeholder">
-                <div class="poster" ng-style="{'background-image': 'url({{movie.images.poster.thumb}})'}"></div>
+                <div class="poster" background="movie.images.poster.thumb"></div>
             </div>
             <div class="movie-info">
                 <span class="title" title="{{movie.title}}">{{movie.title}}</span>
@@ -12,4 +18,5 @@
         </li>
     </ul>
     <spinner on="movieListCtrl.loading" size="4"></spinner>
+    <genres genre="movieListCtrl.genre"></genres>
 </div>
