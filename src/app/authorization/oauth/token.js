@@ -13,7 +13,7 @@
         vm.isValid = isValid;
 
         function getToken() {
-            $cookies.get('access_token');
+            return $cookies.get('access_token');
         }
 
         function setToken(token) {

@@ -7,6 +7,7 @@
     >
         <li class="col-xs-6 col-md-2 movie-grid-item"
             ng-repeat="movie in movieListCtrl.filteredMovies track by $index"
+            ui-sref="movie_details({slug: movie.ids.slug})"
         >
             <div class="placeholder">
                 <div class="poster" background="movie.images.poster.thumb"></div>

@@ -9,7 +9,7 @@
         $stateProvider
             .state('movies_trending', {
                 url: '/movies/trending',
-                templateUrl: 'app/movie/movieList.html',
+                templateUrl: 'app/movie/list/movieList.html',
                 controller: 'MovieListController',
                 controllerAs: 'movieListCtrl',
                 params: {
@@ -18,7 +18,7 @@
             })
             .state('movies_popular', {
                 url: '/movies/popular',
-                templateUrl: 'app/movie/movieList.html',
+                templateUrl: 'app/movie/list/movieList.html',
                 controller: 'MovieListController',
                 controllerAs: 'movieListCtrl',
                 params: {
@@ -27,12 +27,18 @@
             })
             .state('movies_anticipated', {
                 url: '/movies/anticipated',
-                templateUrl: 'app/movie/movieList.html',
+                templateUrl: 'app/movie/list/movieList.html',
                 controller: 'MovieListController',
                 controllerAs: 'movieListCtrl',
                 params: {
                     category: 'anticipated'
                 }
+            })
+            .state('movie_details', {
+                url: '/movies/:slug',
+                templateUrl: 'app/movie/details/movieDetails.html',
+                controller: 'MovieDetailsController',
+                controllerAs: 'movieDetailsCtrl'
             })
             .state('oauth_authorization', {
                 url: '/oauth/authorization',
