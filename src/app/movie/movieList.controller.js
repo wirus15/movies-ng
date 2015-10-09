@@ -41,6 +41,9 @@
                 case 'popular':
                     MovieListResource.popular(params, appendMovies);
                     break;
+                case 'anticipated':
+                    MovieListResource.anticipated(params, appendMovies);
+                    break;
             }
         }
 

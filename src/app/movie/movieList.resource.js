@@ -18,16 +18,22 @@
                 url: '/movies/trending',
                 cache: true,
                 isArray: true,
-                transformResponse: trendingTransformResponse
+                transformResponse: transformResponse
             },
             popular: {
                 url: '/movies/popular',
                 cache: true,
                 isArray: true
+            },
+            anticipated: {
+                url: '/movies/anticipated',
+                cache: true,
+                isArray: true,
+                transformResponse: transformResponse
             }
         });
 
-        function trendingTransformResponse(data) {
+        function transformResponse(data) {
             var items = angular.fromJson(data);
 
             return _.map(items, function (item) {

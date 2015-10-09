@@ -25,6 +25,15 @@
                     category: 'popular'
                 }
             })
+            .state('movies_anticipated', {
+                url: '/movies/anticipated',
+                templateUrl: 'app/movie/movieList.html',
+                controller: 'MovieListController',
+                controllerAs: 'movieListCtrl',
+                params: {
+                    category: 'anticipated'
+                }
+            })
             .state('oauth_authorization', {
                 url: '/oauth/authorization',
                 controller: 'AuthorizationController'
