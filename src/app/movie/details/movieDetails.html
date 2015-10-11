@@ -19,4 +19,16 @@
 
     <watchlist-button movie="movieDetailsCtrl.movie"></watchlist-button>
     <watched-button movie="movieDetailsCtrl.movie"></watched-button>
+
+    <hr/>
+
+    <ul class="nav nav-tabs">
+        <li ui-sref-active="active"><a ui-sref=".cast">Cast</a></li>
+        <li ui-sref-active="active"><a ui-sref=".comments">Comments</a></li>
+        <li ui-sref-active="active"><a ui-sref=".related">Related</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <ui-view></ui-view>
+    </div>
 </div>

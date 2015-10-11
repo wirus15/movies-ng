@@ -45,6 +45,26 @@
                     }
                 }
             })
+            .state('movie_details.cast', {
+                url: '/cast',
+                parent: 'movie_details',
+                templateUrl: 'app/movie/details/people/cast.html',
+                controller: 'CastController',
+                controllerAs: 'castCtrl'
+            })
+            .state('movie_details.comments', {
+                url: '/comments',
+                parent: 'movie_details',
+                templateUrl: 'app/movie/details/comments/list.html',
+                controller: 'CommentsController',
+                controllerAs: 'commentsCtrl'
+            })
+            .state('movie_details.related', {
+                url: '/related',
+                templateUrl: 'app/movie/details/related/list.html',
+                controller: 'RelatedController',
+                controllerAs: 'relatedCtrl'
+            })
             .state('oauth_authorization', {
                 url: '/oauth/authorization',
                 controller: 'AuthorizationController'

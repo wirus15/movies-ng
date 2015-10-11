@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+    <thead>
+        <th>Actor</th>
+        <th>Character</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in castCtrl.cast">
+            <td>{{data.person.name}}</td>
+            <td>{{data.character}}</td>
+        </tr>
+    </tbody>
+</table>

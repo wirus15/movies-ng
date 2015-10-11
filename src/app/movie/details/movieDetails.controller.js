@@ -8,6 +8,5 @@
     function MovieDetailsController($scope, movie) {
         var vm = this;
         vm.movie = movie;
-        console.log(movie);
     }
 })();
