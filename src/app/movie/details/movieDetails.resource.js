@@ -5,17 +5,16 @@
         .module('app')
         .factory('MovieDetailsResource', MovieDetailsResource);
 
-    function MovieDetailsResource(Trakt) {
+    function MovieDetailsResource(Trakt, MovieStatusInterceptor) {
 
         var defaults = {
-            page: 1,
-            limit: 48,
             extended: 'full,images'
         };
 
         return Trakt('/movies/:slug', defaults, {
             get: {
-                cache: true
+                cache: true,
+                interceptor: MovieStatusInterceptor
             }
         });
     }

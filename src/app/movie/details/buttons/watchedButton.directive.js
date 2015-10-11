@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .directive('watchlistButton', WatchlistButtonDirective);
+        .directive('watchedButton', WatchedButtonDirective);
 
-    function WatchlistButtonDirective(WatchlistResource) {
+    function WatchedButtonDirective(WatchedResource) {
         return {
             restrict: 'E',
-            templateUrl: 'app/movie/details/buttons/watchlistButton.directive.html',
+            templateUrl: 'app/movie/details/buttons/watchedButton.directive.html',
             scope: {
                 movie: '='
             },
@@ -18,15 +18,15 @@
         function link(scope) {
             scope.isOnList = false;
             scope.toggle = toggle;
-            scope.$watch('movie.watchlist', function (value) {
+            scope.$watch('movie.watched', function(value) {
                 scope.isOnList = value;
             });
 
             function toggle() {
-                if (scope.movie.watchlist) {
-                    scope.movie.removeFromWatchlist();
+                if (scope.movie.watched) {
+                    scope.movie.removeFromWatched();
                 } else {
-                    scope.movie.addToWatchlist();
+                    scope.movie.addToWatched();
                 }
             }
         }

@@ -5,9 +5,9 @@
         .module('app')
         .controller('MovieDetailsController', MovieDetailsController);
 
-    function MovieDetailsController($scope, $stateParams, MovieDetailsResource) {
+    function MovieDetailsController($scope, movie) {
         var vm = this;
-        vm.movie = MovieDetailsResource.get({ slug: $stateParams.slug });
-        console.log(vm.movie);
+        vm.movie = movie;
+        console.log(movie);
     }
 })();

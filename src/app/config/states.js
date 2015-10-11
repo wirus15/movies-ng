@@ -38,7 +38,12 @@
                 url: '/movies/:slug',
                 templateUrl: 'app/movie/details/movieDetails.html',
                 controller: 'MovieDetailsController',
-                controllerAs: 'movieDetailsCtrl'
+                controllerAs: 'movieDetailsCtrl',
+                resolve: {
+                    movie: function($stateParams, MovieDetailsResource) {
+                        return MovieDetailsResource.get({slug: $stateParams.slug}).$promise;
+                    }
+                }
             })
             .state('oauth_authorization', {
                 url: '/oauth/authorization',

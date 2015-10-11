@@ -1,1 +1,3 @@
-<a class="btn btn-primary fa fa-clock-o" ng-class="{'btn-success': isOnList}" href="#"> Watchlist</a>
+<a class="btn btn-primary" ng-if="!movie.watched" ng-click="toggle()" ng-class="{'btn-success': isOnList}">
+    <i class="fa" ng-class="{'fa-clock-o': !isOnList, 'fa-check': isOnList}">&nbsp;</i>Watchlist
+</a>
