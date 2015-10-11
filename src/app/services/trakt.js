@@ -5,7 +5,7 @@
         .module('app')
         .factory('Trakt', Trakt);
 
-    function Trakt($resource, config) {
+    function Trakt($resource, config, Token) {
 
         return function(url, paramDefaults, actions, options) {
             url = prependBaseUrl(url);
@@ -35,6 +35,10 @@
                 'trakt-api-key': config.trakt.clientId,
                 'trakt-api-version': config.trakt.apiVersion
             };
+
+            if (Token.isValid()) {
+                headers.Authorization = 'Bearer ' + Token.get();
+            }
 
             angular.forEach(actions, function(action) {
                 action.headers = angular.extend({}, action.headers, headers);

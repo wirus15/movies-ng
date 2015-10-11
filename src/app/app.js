@@ -10,7 +10,8 @@
             'ngSanitize',
             'ngTouch',
             'ui.router',
-            'infinite-scroll'
+            'infinite-scroll',
+            'youtube-embed'
         ]);
 
 })();
